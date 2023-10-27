@@ -18,11 +18,14 @@ require("./config/database")();
 //!Server
 const app = express();
 //middlewares
-app.use(morgan("tiny"));
+// app.use(morgan("tiny"));
 app.use(express.json()); //Pass incoming data
 //cors middleware
 app.use(cors());
 // Routes
+app.get("/", (req, res) => {
+  res.status(200).send("Server is working");
+});
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/posts", postsRouter);
